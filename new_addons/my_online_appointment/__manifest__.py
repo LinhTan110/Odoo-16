@@ -1,0 +1,61 @@
+# -*- coding: utf-8 -*-
+{
+    'name': "My Online Appointment",
+    'category': 'Appointment Registration',
+    'version': '1.0',
+    'summary': 'My Online Appointment',
+    'description': 'Make An Appointment At The Restaurant',
+    'author': 'ITPLUS',
+    'license': 'OPL-1',
+    'depends': ['base', 'website', 'mbs_online_appointment', 'sale', 'calendar', 'website_sale', 'auth_signup', 'hr'],
+    'data': [
+        'security/security_view.xml',
+        'security/ir.model.access.csv',
+        'report/report.xml',
+        'report/report_invoice.xml',
+        'report/ir_actions_report.xml',
+        'report/appointment_report.xml',
+        'views/Page-signup-login_view.xml',
+        'views/Account_menu_view.xml',
+        'views/Account_move.xml',
+        'views/Appointment_view.xml',
+        'views/Product_view.xml',
+        'views/Partner_view.xml',
+        'views/Sale-order_view.xml',
+        'views/Manager-table_view.xml',
+        'views/Policy_view.xml',
+        'views/Menu_view.xml',
+        'views/Statistic_view.xml',
+        'views/Time_view.xml',
+        'views/Page-Home_view.xml',
+        'views/Page-Product_view.xml',
+        'views/Page-Success_view.xml',
+        'views/Page-Shop_view.xml',
+        'views/Page-Table_view.xml',
+        'views/Page-Detail-Table_view.xml',
+        'views/Page-Detail-Employee_view.xml',
+        'views/Page-Appointments_view.xml',
+        'views/Page-Policy_view.xml',
+    ],
+
+    "assets": {
+        "web.assets_frontend": [
+            "/my_online_appointment/static/src/js/datlich.js",
+            "/my_online_appointment/static/src/js/main.js",
+            "/my_online_appointment/static/src/css/main.css",
+            "/my_online_appointment/static/src/css/custom.css",
+        ],
+        "web.assets_backend": [
+            "/my_online_appointment/static/src/scss/appointment.scss",
+        ],
+    },
+
+    'demo': [],
+
+    'qweb': [
+        'static/src/xml/*.xml',
+    ],
+    'installable': True,
+    'application': True,
+    'auto_install': False,
+}

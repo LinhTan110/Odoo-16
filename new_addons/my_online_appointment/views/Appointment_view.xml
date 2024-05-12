@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="patient_appointment_tree_inherit" model="ir.ui.view">
+            <field name="name">patient_appointment_tree_inherit</field>
+            <field name="model">patient.appointment</field>
+            <field name="inherit_id" ref="mbs_online_appointment.view_patient_appointment_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree" position="inside">
+                    <header>
+                        <button name="confirm_selected_appointments" string="Confirm" type="object" class="oe_highlight"/>
+                        <button name="unconfirm_selected_appointments" string="Unconfirm" type="object" class="oe_highlight"/>
+                        <button name="create_order_selection" string="New order" type="object" class="oe_highlight"/>
+                    </header>
+                </xpath>
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="email" optional="show"/>
+                    <field name="phone" optional="show"/>
+                    <field name="manager_table" optional="show"/>
+                    <field name="start" optional="show" attrs="{'invisible': [('allday', '=', True)]}"/>
+                    <field name="stop" optional="show" attrs="{'invisible': [('allday', '=', True)]}"/>
+                    <field name="start_date" optional="show" attrs="{'invisible': [('allday', '=', False)]}"/>
+                    <field name="stop_date" optional="show" attrs="{'invisible': [('allday', '=', False)]}"/>
+                    <field name="duration" optional="show" attrs="{'invisible': [('allday', '=', True)]}"/>
+                    <field name="allday" optional="show"/>
+                </xpath>
+                <xpath expr="//field[@name='date_of_birth']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='mobile']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='age']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='gender']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='city']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='date']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='time']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="patient_appointment_form_inherit" model="ir.ui.view">
+            <field name="name">product_template_form_inherit</field>
+            <field name="model">patient.appointment</field>
+            <field name="inherit_id" ref="mbs_online_appointment.patient_appointment_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet[@name='sheet_name']" position="before">
+                    <header>
+                        <button name="action_confirm" data-hotkey="v"
+                                string="Confirm" type="object" context="{'validate_analytic': True}"
+                                attrs="{'invisible': [('state', 'not in', ['draft'])]}"/>
+                        <button name="action_cancel" type="object" string="Cancel" attrs="{'invisible': ['|',
+                            ('state', 'not in', ['draft', 'sent','sale']), ('id', '=', False)]}" data-hotkey="z"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,sale"/>
+                    </header>
+                </xpath>
+                <xpath expr="//div[@class='oe_title']/h2" position="replace">
+                    <h1>
+                        <field name="name" placeholder="Patient Name" required="True" default_focus="1"/>
+                    </h1>
+                    <field name="partner_id"/>
+                </xpath>
+                <xpath expr="//div[@class='oe_title']/h1/field[@name='name']" position="before">
+                    <label for="name" string="Full Name?" class="oe_edit_only"/>
+                </xpath>
+                <xpath expr="//field[@name='date_of_birth']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='date_of_birth']" position="before">
+                    <field name="email" placeholder="abc@gmail.com" readonly="False" options="{'format': true}"/>
+                    <field name="restaurant_name"/>
+                </xpath>
+                <xpath expr="//field[@name='mobile']" position="after">
+                    <field name="phone"/>
+                    <field name="address"/>
+                </xpath>
+                <xpath expr="//field[@name='age']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='mobile']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='gender']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='city']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//group[@name='appointment_clinic']" position="attributes">
+                    <attribute name="string">Dining Table Information</attribute>
+                </xpath>
+                <xpath expr="//group[@name='appointment_clinic']" position="inside">
+                    <field name="reservation_id" invisible="1"/>
+                    <field name="capacity"/>
+                    <field name="characteristic"/>
+                    <field name="location_table"/>
+                    <field name="show_empty_tables" invisible="1"/>
+                    <field name="manager_table" options="{'no_create': True}" />
+                    <field name="price" widget="monetary" invisible="1"/>
+                    <field name="currency_id" invisible="1"/>
+                    <field name="search_button" invisible="1"/>
+                </xpath>
+                <xpath expr="//group[@name='appointment_group']" position="inside">
+                    <field name="matching_tables"/>
+                </xpath>
+                <xpath expr="//field[@name='date']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='time']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//group[@name='appointment_info']/field[@name='time']" position="after">
+                    <field name="start_date" string="Starting at"
+                           attrs="{'required': [('allday','=',True)], 'invisible': [('allday','=',False)]}"
+                           force_save="1"/>
+                    <field name="stop_date" string="Ending at"
+                           attrs="{'required': [('allday','=',True)],'invisible': [('allday','=',False)]}"
+                           force_save="1"/>
+
+                    <field name="start" string="Starting at"
+                           attrs="{'required': [('allday','=',False)], 'invisible': [('allday','=',True)]}"/>
+                    <field name="stop" string="Ending At"
+                           attrs="{'invisible': [('allday','=',True)]}"/>
+                    <label for="duration" attrs="{'invisible': [('allday','=',True)]}"/>
+                    <div attrs="{'invisible': [('allday','=',True)]}">
+                        <field name="duration" widget="float_time" string="Duration" class="oe_inline"/>
+                        <span>hours</span>
+                    </div>
+                    <field name="allday" force_save="1"/>
+                    <field name="refresh_button" invisible="1"/>
+                    <button name="button_refresh_tables" string="Refresh" type="object" class="oe_highlight"/>
+                </xpath>
+                <xpath expr="//page[@name='appointment_info']" position="inside">
+                    <label for="note" string="Ghi chú?" class="oe_edit_only"/>
+                    <field name="note" placeholder="Ghi chú"/>
+                </xpath>
+                <xpath expr="//div[@class='oe_title']" position="before">
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_customer" string="View Customer" type="object" class="btn-primary"
+                                icon="fa-list"/>
+                        <button name="action_view_sale_orders" string="View order" type="object" class="btn-primary"
+                                icon="fa-list"/>
+                        <button name="create_order_selection" string="New order" type="object" class="btn-primary"
+                                icon="fa-list"/>
+
+                        <button name="open_reservation" string="Open Reservation" type="object" class="btn-primary"
+                                icon="fa-list"/>
+                    </div>
+                </xpath>
+                <xpath expr="//page[@name='appointment_info']" position="after">
+                    <page string="Product Page" name="product_page">
+                        <field name="product_ids"/>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="appointment_view_calendar" model="ir.ui.view">
+            <field name="name">appointment_view_calendar</field>
+            <field name="model">patient.appointment</field>
+            <field name="arch" type="xml">
+                <calendar string="Appointment Calendar" date_start="start" date_stop="stop">
+                    <field name="name"/>
+                    <field name="start"/>
+                    <field name="stop"/>
+                    <field name="phone"/>
+                    <field name="email"/>
+                </calendar>
+            </field>
+        </record>
+
+        <record id="mbs_online_appointment.action_patient_appointment" model="ir.actions.act_window">
+            <field name="view_mode">tree,form,calendar</field>
+            <field name="context">{'search_default_unconfirmed_filter':1, }</field>
+        </record>
+
+        <record id="appointment_search_view" model="ir.ui.view">
+            <field name="name">search</field>
+            <field name="model">patient.appointment</field>
+            <field name="arch" type="xml">
+                <search string="search_config">
+                    <field name="name"/>
+                    <field name="phone"/>
+                    <field name="email"/>
+                    <separator/>
+                    <filter string="Unconfirmed" name="unconfirmed_filter" domain="[('state', '=', 'draft')]"/>
+                    <filter string="confirm" name="confirm_filter" domain="[('state', '=', 'sale')]"/>
+                </search>
+            </field>
+        </record>
+
+<!--        không lấy được ID-->
+<!--        <record id="action_confirm_selected_appointments" model="ir.actions.server">-->
+<!--            <field name="name">Confirm</field>-->
+<!--            <field name="model_id" ref="model_patient_appointment"/>-->
+<!--            <field name="binding_model_id" ref="model_patient_appointment"/>-->
+<!--            <field name="binding_view_types">list</field>-->
+<!--            <field name="state">code</field>-->
+<!--            <field name="code">model.confirm_selected_appointments()</field>-->
+<!--        </record>-->
+
+
+    </data>
+</odoo>

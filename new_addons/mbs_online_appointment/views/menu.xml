@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="menu_patient_registration_form" model="website.menu">
+            <field name="name">Patient Appointment</field>
+            <field name="url">/patient_registration</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence">65</field>
+        </record>
+
+
+
+        <menuitem id="online_appointment_config_settings_menu" name="Settings"
+                  parent="mbs_online_appointment.menu_configuration" sequence="0"
+                  action="online_appointment_config_settings_action"
+                  groups="base.group_system"/>
+
+        <!--        <menuitem id="sub_menu_patient_registration"-->
+        <!--                  name="Patient Registration"-->
+        <!--                  parent="patient_registration_main_menu"-->
+        <!--                  sequence="10"/>-->
+
+        <menuitem id="menu_configuration"
+                  name="Configurations"
+                  parent="patient_registration_main_menu"
+                  sequence="30"/>
+    </data>
+</odoo>

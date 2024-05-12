@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="appointment_statistic_report" model="ir.actions.report">
+        <field name="name">Appointment Report</field>
+        <field name="model">patient.appointment</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">my_online_appointment.report_appointment_template</field>
+        <field name="report_file">my_online_appointment.report_appointment_template</field>
+        <field name="binding_model_id" ref="model_patient_appointment"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <!-- QWeb Template for Report -->
+    <template id="report_appointment_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.basic_layout">
+                    <div class="page">
+                        <!-- Report header and basic info -->
+                        <h2>Appointment Report for
+                            <t t-esc="doc.name"/>
+                        </h2>
+                        <table class="table table-sm">
+                            <tbody>
+                                <tr>
+                                    <th>Email:</th>
+                                    <td>
+                                        <t t-esc="doc.email"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Phone:</th>
+                                    <td>
+                                        <t t-esc="doc.phone"/>
+                                    </td>
+                                </tr>
+                                <!-- More fields can be added as needed -->
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <!-- Pivot View -->
+    <record id="view_patient_appointment_pivot" model="ir.ui.view">
+        <field name="name">patient.appointment.pivot</field>
+        <field name="model">patient.appointment</field>
+        <field name="arch" type="xml">
+            <pivot string="Appointment Statistics">
+                <!--                <field name="state" type="row"/>-->
+                <!--                <field name="dr_nm" type="row"/>-->
+                <!--                <field name="hospital" type="row"/>-->
+                <field name="name" type="row"/>
+                <field name="phone" type="row"/>
+                <field name="email" type="row"/>
+                <field name="start_date" type="col"/>
+                <field name="duration" type="measure"/>
+                <!-- More fields can be added here -->
+            </pivot>
+        </field>
+    </record>
+
+    <!-- Graph View -->
+    <record id="view_patient_appointment_graph" model="ir.ui.view">
+        <field name="name">patient.appointment.graph</field>
+        <field name="model">patient.appointment</field>
+        <field name="arch" type="xml">
+            <graph string="Appointment Statistics" type="bar">
+                <!--                <field name="hospital" type="row"/>-->
+                <!--                <field name="state" type="measure"/>-->
+                <field name="name" type="row"/>
+                <field name="phone" type="row"/>
+                <field name="email" type="row"/>
+                <!-- More fields can be added here -->
+            </graph>
+        </field>
+    </record>
+
+</odoo>

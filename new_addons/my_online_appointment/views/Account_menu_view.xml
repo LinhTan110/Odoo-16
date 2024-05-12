@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem id="appointment_registration_main_menu" name="Appointment Registration"
+                  web_icon="my_online_appointment/static/description/icon.png" sequence="1"/>
+
+
+        <!--PATIENT REGISTRATION-->
+        <menuitem id="mbs_online_appointment.patient_reg_action_menu"
+                  name="Appointment"
+                  parent="mbs_online_appointment.patient_registration_main_menu"
+                  sequence="2"
+                  action="mbs_online_appointment.action_patient_appointment"
+        />
+
+        <!-- Manager_table -->
+        <record id="manager_table_action" model="ir.actions.act_window">
+            <field name="name">Manager Table</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">manager.table</field>
+            <field name="view_mode">kanban,tree,form</field>
+        </record>
+        <menuitem id="Manager_table_menu_id" name="Manager Table" parent="mbs_online_appointment.menu_configuration"
+                  action="manager_table_action" sequence="1"/>
+
+        <!-- Reservation Time -->
+        <record id="reservation_action" model="ir.actions.act_window">
+            <field name="name">Reservation Time</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">reservation.time</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="reservation_menu_id" name="Reservation Time" parent="mbs_online_appointment.menu_configuration"
+                  action="reservation_action" sequence="2"/>
+
+        <!-- Restaurant Policy -->
+        <record id="policy_action" model="ir.actions.act_window">
+            <field name="name">Restaurant Policy</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">restaurant.policy</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="restaurant_policy_id"
+                  name="Restaurant Policy"
+                  parent="mbs_online_appointment.menu_configuration"
+                  action="policy_action" sequence="3"/>
+
+        <!-- Restaurant Address -->
+        <record id="restaurant_address_action" model="ir.actions.act_window">
+            <field name="name">Restaurant Address</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">restaurant.name</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="restaurant_address_id"
+                  name="Restaurant Address"
+                  parent="mbs_online_appointment.menu_configuration"
+                  action="restaurant_address_action" sequence="4"/>
+
+        <!-- Action to Open Views -->
+        <record id="action_appointment_report" model="ir.actions.act_window">
+            <field name="name">Appointment Report</field>
+            <field name="res_model">patient.appointment</field>
+            <field name="view_mode">pivot,graph,tree,form</field>
+        </record>
+        <menuitem id="menu_appointment_report"
+                  name="Appointment Report"
+                  parent="mbs_online_appointment.menu_configuration"
+                  action="action_appointment_report" sequence="5"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!--        APPOINTMENT REGISTRATION-->
+        <menuitem id="appointment_reg_action_menu"
+                  name="Appointment"
+                  parent="my_online_appointment.appointment_registration_main_menu"
+                  sequence="2"
+                  action="mbs_online_appointment.action_patient_appointment"
+        />
+
+        <menuitem id="appointment_menu_configuration"
+                  name="Configurations"
+                  parent="my_online_appointment.appointment_registration_main_menu"
+                  sequence="3"/>
+
+        <menuitem id="online_appointment_settings_menu" name="Settings"
+                  parent="my_online_appointment.appointment_menu_configuration" sequence="0"
+                  action="mbs_online_appointment.online_appointment_config_settings_action"
+                  groups="base.group_system"/>
+
+        <!-- Manager_table -->
+        <record id="manager_table_action_appointment" model="ir.actions.act_window">
+            <field name="name">Manager Table</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">manager.table</field>
+            <field name="view_mode">kanban,tree,form</field>
+        </record>
+        <menuitem id="Manager_table_menu_id_appointment" name="Manager Table"
+                  parent="my_online_appointment.appointment_menu_configuration"
+                  action="manager_table_action_appointment" sequence="1"/>
+
+        <!-- Reservation Time -->
+        <record id="reservation_action_appointment" model="ir.actions.act_window">
+            <field name="name">Reservation Time</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">reservation.time</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="reservation_menu_id_appointment" name="Reservation Time"
+                  parent="my_online_appointment.appointment_menu_configuration"
+                  action="reservation_action_appointment" sequence="2"/>
+
+        <!-- Restaurant Policy -->
+        <record id="policy_action_appointment" model="ir.actions.act_window">
+            <field name="name">Restaurant Policy</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">restaurant.policy</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="restaurant_policy_id_appointment"
+                  name="Restaurant Policy"
+                  parent="my_online_appointment.appointment_menu_configuration"
+                  action="policy_action_appointment" sequence="3"/>
+
+        <!-- Restaurant Address -->
+        <record id="restaurant_address_action_appointment" model="ir.actions.act_window">
+            <field name="name">Restaurant Address</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">restaurant.name</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="restaurant_address_id_appointment"
+                  name="Restaurant Address"
+                  parent="my_online_appointment.appointment_menu_configuration"
+                  action="restaurant_address_action_appointment" sequence="4"/>
+
+        <!-- Action to Open Views -->
+        <record id="action_appointment_report_appointment" model="ir.actions.act_window">
+            <field name="name">Appointment Report</field>
+            <field name="res_model">patient.appointment</field>
+            <field name="view_mode">pivot,graph,tree,form</field>
+        </record>
+        <menuitem id="menu_appointment_report_appointment"
+                  name="Appointment Report"
+                  parent="my_online_appointment.appointment_menu_configuration"
+                  action="action_appointment_report_appointment" sequence="5"/>
+
+
+        <!-- Capacity -->
+        <record id="capacity_action_appointment" model="ir.actions.act_window">
+            <field name="name">Capacity</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">capacity</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="capacity_menu_id_appointment" name="Capacity"
+                  parent="my_online_appointment.appointment_menu_configuration"
+                  action="capacity_action_appointment" sequence="6"/>
+
+
+        <!-- Location table -->
+        <record id="location_table_action_appointment" model="ir.actions.act_window">
+            <field name="name">Location table</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">location.table</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="location_table_menu_id_appointment" name="Location table"
+                  parent="my_online_appointment.appointment_menu_configuration"
+                  action="location_table_action_appointment" sequence="7"/>
+
+        <!-- Characteristic -->
+        <record id="characteristic_action_appointment" model="ir.actions.act_window">
+            <field name="name">Characteristic</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">characteristic</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="characteristic_menu_id_appointment" name="Characteristic"
+                  parent="my_online_appointment.appointment_menu_configuration"
+                  action="characteristic_action_appointment" sequence="8"/>
+    </data>
+</odoo>

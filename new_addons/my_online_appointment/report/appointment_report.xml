@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="appointment_report">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-set="lang" t-value="doc.partner_id.lang"/>
+                    <t t-call="my_online_appointment.appointment_report_document" t-lang="lang"/>
+                </t>
+            </t>
+        </template>
+
+        <template id="appointment_report_document">
+            <t t-call="web.external_layout">
+                <t t-set="doc" t-value="doc.with_context(lang=lang)"/>
+                <div class="row">
+                    <t t-if="doc.partner_id">
+                        <div class="col-6">
+                            <t t-set="information_block">
+                                <t t-set="address">
+                                    <address class="mb-0" t-field="doc.partner_id"
+                                             t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'/>
+                                    <div t-if="doc.partner_id.vat" id="partner_vat_no_shipping">
+                                        <t>Tax ID</t>:
+                                        <span t-field="doc.partner_id.vat"/>
+                                    </div>
+                                </t>
+                            </t>
+                        </div>
+                    </t>
+                </div>
+                <div t-if="doc.email" class="col-auto mw-100 mb-2" name="email">
+                    <strong>Email:
+                        <span class="m-0" t-field="doc.email"/>
+                    </strong>
+                </div>
+                <div t-if="doc.phone" class="col-auto mw-100 mb-2" name="phone">
+                    <strong>Phone:
+                        <span class="m-0" t-field="doc.phone"/>
+                    </strong>
+                </div>
+                <div class="mt-5">
+                    <div class="page">
+                        <h1>
+                            <span t-field="doc.appoi_sequence"/>
+                        </h1>
+                        <h2>
+                            <span t-field="doc.name"/>
+                        </h2>
+
+                        <div id="informations" class="row mt-4 mb-4">
+                            <div class="row mt-4 mb-4" id="edit_time">
+                                <div t-if="doc.allday" class="col-auto col-3 mw-100 mb-2" name="start_date">
+                                    <strong>Start Date:</strong>
+                                    <p class="m-0" t-field="doc.start_date"/>
+                                </div>
+                                <div t-if="doc.allday" class="col-auto col-3 mw-100 mb-2" name="stop_date">
+                                    <strong>End Date:</strong>
+                                    <p class="m-0" t-field="doc.stop_date"/>
+                                </div>
+                                <div t-if="not doc.allday" class="col-auto col-3 mw-100 mb-2" name="start_time">
+                                    <strong>Start Time:</strong>
+                                    <p class="m-0" t-field="doc.start"/>
+                                </div>
+                                <div t-if="not doc.allday" class="col-auto col-3 mw-100 mb-2" name="stop_time">
+                                    <strong>End Time:</strong>
+                                    <p class="m-0" t-field="doc.stop"/>
+                                </div>
+                                <div t-if="doc.duration" class="col-auto col-3 mw-100 mb-2" name="duration">
+                                    <strong>Time:</strong>
+                                    <p class="m-0" t-if="not doc.allday" t-field="doc.duration">hours</p>
+                                    <p class="m-0" t-if="doc.allday">24 hours</p>
+                                </div>
+                                <div t-if="doc.allday" class="col-auto col-3 mw-100 mb-2" name="allday">
+                                    <strong>Allday:</strong>
+                                    <p class="m-0" t-field="doc.allday"/>
+                                </div>
+                                <div t-if="not doc.allday" class="col-auto col-3 mw-100 mb-2" name="allday">
+                                    <strong>Allday:</strong>
+                                    <p class="m-0">False</p>
+                                </div>
+                            </div>
+                            <div class="row mt-4 mb-4" id="edit_table">
+                                <div t-if="doc.capacity" class="col-auto col-3 mw-100 mb-2" name="capacity">
+                                    <strong>Capacity:</strong>
+                                    <p class="m-0" t-field="doc.capacity"/>
+                                </div>
+                                <div t-if="doc.location_table" class="col-auto col-3 mw-100 mb-2" name="location_table">
+                                    <strong>Location Table:</strong>
+                                    <p class="m-0" t-field="doc.location_table"/>
+                                </div>
+                                <div t-if="doc.characteristic" class="col-auto col-3 mw-100 mb-2" name="characteristic">
+                                    <strong>Characteristic:</strong>
+                                    <p class="m-0" t-if="doc.characteristic" t-field="doc.characteristic"/>
+                                </div>
+                                <div t-if="doc.manager_table" class="col-auto col-3 mw-100 mb-2" name="table">
+                                    <strong>Table:</strong>
+                                    <p class="m-0" t-field="doc.manager_table"/>
+                                </div>
+                            </div>
+                            <div class="row mt-4 mb-4" id="price_table">
+                                <div t-if="doc.price" class="col-auto col-3 mw-100 mb-2" name="price">
+                                    <strong>Price Table:</strong>
+                                    <p class="m-0" t-field="doc.price"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <table class="table table-sm o_main_table table-borderless" name="invoice_line_table">
+                            <thead>
+                                <tr>
+                                    <th name="th_name" class="text-start">Name</th>
+                                    <th name="th_description" class="text-start">Menu</th>
+                                    <th name="th_quantity" class="text-end">Quantity</th>
+                                    <th name="th_priceunit" class="text-end">Unit Price</th>
+                                    <th name="th_subtotal" class="text-end">Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="total_price" t-value="0"/>
+                                <t t-foreach="doc.product_ids" t-as="product">
+                                    <tr>
+                                        <td>
+                                            <span t-field="product.name"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="product.dish_list"/>
+                                        </td>
+                                        <td class="text-end">1</td>
+                                        <td class="text-end">
+                                            <span t-field="product.lst_price"/>
+                                        </td>
+                                        <td class="text-end">
+                                            <span t-esc="product.lst_price * 1"
+                                                  t-options='{"widget": "monetary", "display_currency": product.currency_id}'/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+
+                        <div class="row mt-4 mb-4">
+                            <div class="col-auto mw-100 mb-2" name="note">
+                                <strong>Ghi chú:
+                                    <span class="m-0" t-field="doc.note"/>
+                                </strong>
+                            </div>
+                        </div>
+
+                        <div class="clearfix mb-4">
+                            <div t-if="doc.restaurant_name" class="col-auto mw-100 mb-2" name="restaurant_name">
+                                <strong>Restaurant:
+                                    <span class="m-0" t-field="doc.restaurant_name"/>
+                                </strong>
+                            </div>
+                            <div t-if="doc.address" class="col-auto mw-100 mb-2" name="address">
+                                <strong>Address:
+                                    <span class="m-0" t-field="doc.address"/>
+                                </strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

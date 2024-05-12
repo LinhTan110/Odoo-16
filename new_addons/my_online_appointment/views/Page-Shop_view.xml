@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="products_description_custom" inherit_id="website_sale.products_description" active="True" name="Product Description Custom">
+        <xpath expr="//div[contains(@class, 'oe_subdescription')]" position="replace">
+            <div class="oe_subdescription mb-2 text-muted small" contenteditable="false">
+                <div itemprop="description" t-field="product.description"/>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="checkout_id_inherit" inherit_id="website_sale.checkout">
+        <xpath expr="//div[@class='col-lg-12']/h3[@class='o_page_header mt8']" position="replace">
+            <h3 class="o_page_header mt8">Appointment Address</h3>
+        </xpath>
+    </template>
+
+    <template id="address_id_inherit" inherit_id="website_sale.address">
+        <xpath expr="." position="inside">
+            <link rel="text/css" href="/my_online_appointment/static/src/css/main.css"/>
+            <script type="text/javascript" src="/my_online_appointment/static/src/js/main.js"/>
+            <script type="text/javascript" src="/my_online_appointment/static/src/js/datlich.js"/>
+        </xpath>
+
+        <xpath expr="//h2[@class='o_page_header mt8'][contains(text(), 'Your Address')]" position="replace">
+            <h2 class="o_page_header mt8">Appointment Schedule</h2>
+        </xpath>
+
+        <xpath expr="//div[@id='div_phone']" position="after">
+            <div class="mb-3 col-lg-6" id="div_restaurant">
+                <label for="restaurant_name">Restaurant</label>
+                <input type="text" name="restaurant_name" id="restaurant_name"
+                       t-attf-class="form-control" t-att-value="default_restaurant"/>
+            </div>
+            <div class="mb-3 col-lg-6" id="div_address">
+                <label for="address">Restaurant address</label>
+                <input type="text" name="address" id="address"
+                       t-attf-class="form-control" t-att-value="default_address"/>
+            </div>
+            <t t-if="mode == ('edit', 'billing')">
+                <div t-attf-class="mb-3 col-lg-6" id="div_start_date">
+                    <label t-attf-class="col-form-label" for="start">Start Date</label>
+                    <input type="datetime-local" class="form-control form_input"
+                           name="start" id="start" required="true"/>
+                </div>
+                <div class="col-lg-3">
+                    <label class="col-form-label" for="duration">Duration (hours)</label>
+                    <div class="input-group">
+                        <input type="number" class="form-control text_input" name="duration"
+                               id="duration" min="1" step="0.25" value="1"/>
+                        <span class="input-group-text">hour</span>
+                    </div>
+                </div>
+                <div class="col-lg-3 check_form">
+                    <label class="col-form-label label_check" for="allday">All Day</label>
+                    <input type="checkbox" class="form-check-input check_input"
+                           name="allday" id="allday"/>
+                </div>
+                <div class="col-lg-4">
+                    <label class="col-form-label" for="capacity">Capacity</label>
+                    <select class="form-select" name="capacity" id="capacity">
+                        <option value="capacity" disabled="True" selected="True">Select
+                            Capacity
+                        </option>
+                        <t t-foreach="capacitys" t-as="capacity">
+                            <option t-att-value="capacity.id">
+                                <t t-esc="capacity.name"/>
+                            </option>
+                        </t>
+                    </select>
+                </div>
+                <div class="mb-3 col-lg-4">
+                    <label class="col-form-label" for="location_table">Location Table
+                    </label>
+                    <select class="form-select" name="location_table" id="location_table">
+                        <option value="location_table" disabled="True" selected="True">
+                            Select Location Table
+                        </option>
+                        <t t-foreach="locations" t-as="location">
+                            <option t-att-value="location.id">
+                                <t t-esc="location.name"/>
+                            </option>
+                        </t>
+                    </select>
+                </div>
+                <div class="mb-3 col-lg-4">
+                    <label class="col-form-label" for="characteristic">Characteristic
+                    </label>
+                    <select class="form-select" name="characteristic" id="characteristic">
+                        <option value="characteristic" disabled="True" selected="True">
+                            Select Characteristic
+                        </option>
+                        <t t-foreach="characteristics" t-as="characteristic">
+                            <option t-att-value="characteristic.id">
+                                <t t-esc="characteristic.name"/>
+                            </option>
+                        </t>
+                    </select>
+                </div>
+                <div class="col-lg-12">
+                    <fieldset class="form-group">
+                        <label class="col-form-label" for="manager_table_select">Ghi chú</label>
+                        <textarea placeholder="Ghi chú" name="note" id="note" class="form-control form-control-lg"
+                                  rows="7"/>
+                    </fieldset>
+                </div>
+                <t t-foreach="request.website.sale_get_order().order_line" t-as="line">
+                    <input type="hidden" name="product_ids[]" t-att-value="line.product_id.id"/>
+                    <input type="hidden" name="product_quantities[]" t-att-value="line.product_uom_qty"/>
+                </t>
+            </t>
+        </xpath>
+
+        <xpath expr="//form[@action='/shop/address']" position="attributes">
+            <attribute name="action">/create_appointment</attribute>
+            <attribute name="id">create_appointment_form</attribute>
+        </xpath>
+
+        <xpath expr="//div[contains(@t-attf-class, 'div_street')]" position="replace"/>
+        <xpath expr="//div[contains(@t-attf-class, 'div_street2')]" position="replace"/>
+        <xpath expr="//div[contains(@t-attf-class, 'div_zip')]" position="replace"/>
+        <xpath expr="//div[contains(@t-attf-class, 'div_city')]" position="replace"/>
+        <xpath expr="//div[contains(@t-attf-class, 'div_zip')]" position="replace"/>
+        <xpath expr="//div[contains(@t-attf-class, 'div_country')]" position="replace"/>
+        <xpath expr="//div[contains(@t-attf-class, 'div_state')]" position="replace"/>
+    </template>
+
+</odoo>

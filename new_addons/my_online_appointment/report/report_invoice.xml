@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="appointment_id_report_invoice" inherit_id="account.report_invoice_document">
+        <xpath expr="//div[@class='mt-5']" position="before">
+            <div class="col-auto mw-100 mb-2" name="email">
+                <strong>Email:
+                    <span class="m-0" t-field="o.email"/>
+                </strong>
+            </div>
+            <div class="col-auto mw-100 mb-2" name="phone">
+                <strong>Phone:
+                    <span class="m-0" t-field="o.phone"/>
+                </strong>
+            </div>
+        </xpath>
+
+        <xpath expr="//div[@id='informations']" position="after">
+            <div class="row mt-4 mb-4" id="edit_time">
+                <div t-if="doc.allday" class="col-auto col-3 mw-100 mb-2" name="start_date">
+                    <strong>Start Date:</strong>
+                    <p class="m-0" t-field="doc.start_date"/>
+                </div>
+                <div t-if="doc.allday" class="col-auto col-3 mw-100 mb-2" name="stop_date">
+                    <strong>End Date:</strong>
+                    <p class="m-0" t-field="doc.stop_date"/>
+                </div>
+                <div t-if="not doc.allday" class="col-auto col-3 mw-100 mb-2" name="start_time">
+                    <strong>Start Time:</strong>
+                    <p class="m-0" t-field="doc.start"/>
+                </div>
+                <div t-if="not doc.allday" class="col-auto col-3 mw-100 mb-2" name="stop_time">
+                    <strong>End Time:</strong>
+                    <p class="m-0" t-field="doc.stop"/>
+                </div>
+                <div class="col-auto col-3 mw-100 mb-2" name="duration">
+                    <strong>Time:</strong>
+                    <p class="m-0" t-if="not o.allday" t-field="o.duration">hours</p>
+                    <p class="m-0" t-if="o.allday">24 hours</p>
+                </div>
+                <div t-if="o.allday" class="col-auto col-3 mw-100 mb-2" name="allday">
+                    <strong>Allday:</strong>
+                    <p class="m-0" t-field="o.allday"/>
+                </div>
+                <div t-if="not o.allday" class="col-auto col-3 mw-100 mb-2" name="allday">
+                    <strong>Allday:</strong>
+                    <p class="m-0">False</p>
+                </div>
+            </div>
+            <div class="row mt-4 mb-4" id="edit_table">
+                <div t-if="o.location_table" class="col-auto col-3 mw-100 mb-2" name="location_table">
+                    <strong>Location Table:</strong>
+                    <p class="m-0" t-field="o.location_table"/>
+                </div>
+                <div t-if="o.characteristic" class="col-auto col-3 mw-100 mb-2" name="characteristic">
+                    <strong>Characteristic:</strong>
+                    <p class="m-0" t-if="o.characteristic" t-field="o.characteristic"/>
+                </div>
+                <div t-if="o.capacity" class="col-auto col-3 mw-100 mb-2" name="capacity">
+                    <strong>Capacity:</strong>
+                    <p class="m-0" t-field="o.capacity"/>
+                </div>
+                <div t-if="o.table" class="col-auto col-3 mw-100 mb-2" name="table">
+                    <strong>Table:</strong>
+                    <p class="m-0" t-field="o.table"/>
+                </div>
+            </div>
+        </xpath>
+
+        <xpath expr="//div[@name='payment_term']" position="after">
+            <div class="row mt-4 mb-4" id="edit_restaurant">
+                <div class="col-auto mw-100 mb-2" name="restaurant_name">
+                    <strong>Restaurant name:
+                        <span class="m-0" t-field="o.restaurant_name"/>
+                    </strong>
+                </div>
+                <div class="col-auto mw-100 mb-2" name="address">
+                    <strong>Address:
+                        <span class="m-0" t-field="o.address"/>
+                    </strong>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>

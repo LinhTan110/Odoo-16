@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="PageHome_inherit" inherit_id="website.homepage">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" href="/my_online_appointment/static/src/css/main.css"/>
+            <script type="text/javascript" src="/my_online_appointment/static/src/js/main.js"/>
+        </xpath>
+        <xpath expr="//div[@id='wrap']" position="inside">
+            <t t-call="my_online_appointment.slide"/>
+
+            <t t-call="my_online_appointment.product"/>
+
+            <t t-call="my_online_appointment.table_type"/>
+
+            <t t-call="my_online_appointment.employee"/>
+
+            <t t-call="my_online_appointment.cover"/>
+
+            <!-- <t t-call="my_online_appointment.news"/> -->
+
+        </xpath>
+    </template>
+
+    <template id="cover">
+        <section class="s_cover parallax s_parallax_is_fixed bg-black-50 pt96 pb96 o_colored_level"
+                 data-scroll-background-ratio="1" data-snippet="s_cover" data-name="Cover"
+                 style="background-image: none;">
+            <span class="s_parallax_bg oe_img_bg"
+                  style="background-image: url('/my_online_appointment/static/src/img/slide1.jpg'); background-position: 50% 0;"/>
+            <div class="o_we_bg_filter bg-black-50"/>
+            <div class="container s_allow_columns">
+                <h1 style="text-align: center;">
+                    <font style="font-size: 62px; font-weight: bold;" class="o_default_snippet_text">Catchy
+                        Headline
+                    </font>
+                </h1>
+                <p class="lead o_default_snippet_text" style="text-align: center;"
+                   data-sider-select-id="ec847a06-4ac0-4f96-aac9-07ada67bed3b">Write one or two paragraphs
+                    describing your product, services or a specific feature.
+                    <br/>
+                    To be successful your content needs to be useful to your readers.
+                </p>
+                <p style="text-align: center;">
+                    <a t-att-href="'/patient_registration'"
+                       class="btn btn-primary mb-2 o_default_snippet_text">Đặt bàn
+                    </a>
+                </p>
+            </div>
+        </section>
+    </template>
+
+    <template id="news">
+        <section class="s_title pt40 pb40 o_colored_level" data-vcss="001" data-snippet="s_title" data-name="Title"
+                 style="background-image: none;">
+            <div class="s_allow_columns container">
+                <h1 style="text-align: left;">
+                    <font style="font-size: 62px;" class="o_default_snippet_text"
+                          data-sider-select-id="80f37325-4656-44b9-9c0d-cba28046a2b9">Your Site Title
+                    </font>
+                    <a t-attf-href="/blog" class="btn btn-primary s_title_a"
+                       data-bs-original-title=""
+                       title="" data-sider-select-id="df9bc373-a9f1-472a-95c3-1dc86e78c2b3">Xem thêm
+                    </a>
+                </h1>
+            </div>
+        </section>
+        <section class="s_three_columns o_cc o_cc2 pt32 pb32 o_colored_level" data-vcss="001"
+                 data-snippet="s_three_columns" data-name="Columns" style="background-image: none;">
+            <div class="container">
+                <div class="row d-flex align-items-stretch">
+                    <div class="col-lg-4 s_col_no_bgcolor pt16 pb16">
+                        <div class="card text-bg-white h-100">
+                            <img class="card-img-top" src="/web/image/website.s_three_columns_default_image_1"
+                                 alt="" loading="lazy" data-original-id="259"
+                                 data-original-src="/web/image/website.library_image_11"
+                                 data-mimetype="image/jpeg"/>
+                            <div class="card-body">
+                                <h3 class="card-title o_default_snippet_text">Feature One</h3>
+                                <p class="card-text o_default_snippet_text">Adapt these three columns to fit your
+                                    design need. To duplicate, delete or move columns, select the column and use the
+                                    top icons to perform your action.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <template id="product">
+        <section class="s_title pt40 pb40 o_colored_level" data-vcss="001" data-snippet="s_title" data-name="Title"
+                 style="background-image: none;">
+            <div class="s_allow_columns container">
+                <h1 style="text-align: left;">
+                    <font style="font-size: 62px;" class="o_default_snippet_text"
+                          data-sider-select-id="80f37325-4656-44b9-9c0d-cba28046a2b9">Món ăn nỗi bật
+                    </font>
+                    <a t-attf-href="/shop" class="btn btn-primary s_title_a" data-bs-original-title=""
+                       title="" data-sider-select-id="df9bc373-a9f1-472a-95c3-1dc86e78c2b3">Xem thêm
+                    </a>
+                </h1>
+            </div>
+        </section>
+        <section class="s_tabs pt48 pb48 o_colored_level" data-vcss="001" data-snippet="s_tabs" data-name="Tabs"
+                 style="background-image: none;">
+            <div class="container">
+                <div class="s_tabs_main">
+                    <div class="s_tabs_content tab-content">
+                        <div class="tab-pane fade active show" id="nav_tabs_content_1712217750338_577"
+                             role="tabpanel" aria-labelledby="nav_tabs_link_1712217750338_577">
+                            <div class="oe_structure oe_empty"
+                                 data-sider-insert-id="489b3848-21d6-4236-9b67-bed91e4f39e3"
+                                 data-editor-message-default="true" data-editor-message="DRAG BUILDING BLOCKS HERE">
+                                <section data-snippet="s_dynamic_snippet_products"
+                                         class="s_dynamic_snippet_products s_dynamic pt32 pb32 s_product_product_borderless_1 o_dynamic_empty"
+                                         data-name="Products" style="background-image: none;"
+                                         data-product-category-id="all" data-number-of-records="16"
+                                         data-filter-id="8"
+                                         data-template-key="website_sale.dynamic_filter_template_product_product_borderless_1"
+                                         data-carousel-interval="5000">
+                                    <div class="container o_not_editable">
+                                        <div class="css_non_editable_mode_hidden">
+                                            <div class="missing_option_warning alert alert-info rounded-0 fade show d-none d-print-none o_default_snippet_text">
+                                                Your Dynamic Snippet will be displayed here... This message is
+                                                displayed because you did not provided both a filter and a template
+                                                to use.
+                                                <br/>
+                                            </div>
+                                        </div>
+                                        <div class="dynamic_snippet_template"/>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <template id="employee">
+        <section class="s_features_grid pt48 pb24 o_colored_level" data-snippet="s_features_grid"
+                 data-name="Features Grid" style="background-image: none;">
+            <div class="container">
+                <div class="row">
+                    <!-- Column for chefs -->
+                    <div class="col-lg-6 s_col_no_bgcolor pb24">
+                        <t t-foreach="chefs" t-as="chef">
+                            <div class="row">
+                                <div class="col-lg-12 pb24 o_colored_level">
+                                    <h2 class="o_default_snippet_text">Nhân viên nấu ăn</h2>
+                                    <h5 class="o_default_snippet_text">Đầu bếp của chúng tôi</h5>
+                                </div>
+                                <div class="col-lg-12 pb24 o_colored_level">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <div class="col-lg-4 pb16 o_not_editable">
+                                            <a class="link" t-att-href="'/detail-employee/' + str(chef.id)">
+                                                <img alt="" t-attf-src="/web/image?model=hr.employee&amp;field=image_1920&amp;id=#{chef.id}"
+                                                     class="img-fluid rounded-circle mx-auto o_editable_media" loading="lazy"/>
+                                            </a>
+                                        </div>
+                                        <div class="s_features_grid_content col-lg-8">
+                                            <a class="link" t-att-href="'/detail-employee/' + str(chef.id)">
+                                                <h3 class="o_default_snippet_text">
+                                                    <t t-esc="chef.name"/>
+                                                </h3>
+                                            </a>
+                                            <p class="o_default_snippet_text">
+                                                <t t-esc="chef.note"/>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+                    <!-- Column for serves -->
+                    <div class="col-lg-6 s_col_no_bgcolor pb24">
+                        <t t-foreach="serves" t-as="serve">
+                            <div class="row">
+                                <div class="col-lg-12 pb24 o_colored_level" data-name="Box">
+                                    <h2 class="o_default_snippet_text">Nhân viên phục vụ</h2>
+                                    <h5 class="o_default_snippet_text">Nhân viên phục vụ của chúng tôi</h5>
+                                </div>
+                                <div class="col-lg-12 pb24 o_colored_level">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <div class="col-lg-4 pb16 o_not_editable">
+                                            <a class="link" t-att-href="'/detail-employee/' + str(serve.id)">
+                                                <img alt="" t-attf-src="/web/image?model=hr.employee&amp;field=image_1920&amp;id=#{serve.id}"
+                                                     class="img-fluid rounded-circle mx-auto o_editable_media" loading="lazy"/>
+                                            </a>
+                                        </div>
+                                        <div class="s_features_grid_content col-lg-8">
+                                            <a class="link" t-att-href="'/detail-employee/' + str(serve.id)">
+                                                <h3 class="o_default_snippet_text">
+                                                    <t t-esc="serve.name"/>
+                                                </h3>
+                                            </a>
+                                            <p class="o_default_snippet_text">
+                                                <t t-esc="serve.note"/>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <template id="slide">
+        <section class="s_carousel_wrapper" data-vxml="001" data-snippet="s_carousel" data-name="Carousel">
+            <div class="s_carousel carousel slide s_carousel_default" data-bs-interval="10000"
+                 id="Slide" style="background-image: none; position: relative;"
+                 data-oe-shape-data="{&quot;shape&quot;:&quot;web_editor/Origins/18&quot;,&quot;flip&quot;:[],&quot;animated&quot;:&quot;true&quot;}">
+                <div class="o_we_shape o_web_editor_Origins_18 o_we_animated"/>
+
+                <ol class="carousel-indicators o_we_no_overlay">
+                    <li data-bs-slide-to="0" data-bs-target="#Slide" aria-current="true" class="active"/>
+                    <li data-bs-slide-to="1" data-bs-target="#Slide"/>
+                    <li data-bs-slide-to="2" data-bs-target="#Slide"/>
+                    <li data-bs-slide-to="3" data-bs-target="#Slide"/>
+                </ol>
+
+                <div class="carousel-inner">
+                    <div class="carousel-item pt152 pb152 o_colored_level oe_img_bg o_bg_img_center active"
+                         style="background-image: url(&quot;/my_online_appointment/static/src/img/slide1.jpg&quot;);"
+                         data-name="Slide" data-original-id="1763"
+                         data-original-src="/web/image/1763-a65ea5b9/9.jpg" data-mimetype="image/jpeg"
+                         data-resize-width="750">
+                        <div class="oe_unremovable container">
+                            <div class="row content">
+                                <div class="carousel-content col-lg-6 o_colored_level">
+                                    <h2>
+                                        <font style="font-size: 62px;" class="o_default_snippet_text">Slide
+                                            Title
+                                        </font>
+                                    </h2>
+                                    <p class="lead o_default_snippet_text">Use this snippet to presents your
+                                        content in a slideshow-like format. Don't write about products or
+                                        services here, write about solutions.
+                                    </p>
+                                    <p>
+                                        <a href="/contactus"
+                                           class="btn btn-primary mb-2 o_default_snippet_text">Đặt lịch
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item pt152 pb152 o_colored_level oe_img_bg o_bg_img_center"
+                         style="background-image: url(&quot;/my_online_appointment/static/src/img/slide2.jpg&quot;);"
+                         data-name="Slide" data-original-id="1763"
+                         data-original-src="/web/image/1763-a65ea5b9/9.jpg" data-mimetype="image/jpeg"
+                         data-resize-width="750">
+                        <div class="oe_unremovable container">
+                            <div class="row content">
+                                <div class="carousel-content col-lg-6 o_colored_level">
+                                    <h2>
+                                        <font style="font-size: 62px;" class="o_default_snippet_text">Slide
+                                            Title
+                                        </font>
+                                    </h2>
+                                    <p class="lead o_default_snippet_text">Use this snippet to presents your
+                                        content in a slideshow-like format. Don't write about products or
+                                        services here, write about solutions.
+                                    </p>
+                                    <p>
+                                        <a href="/contactus"
+                                           class="btn btn-primary mb-2 o_default_snippet_text">Contact us
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item pt96 pb96 o_colored_level oe_img_bg o_bg_img_center"
+                         style="background-image: url(&quot;/my_online_appointment/static/src/img/slide3.jpg&quot;);"
+                         data-name="Slide">
+                        <div class="container oe_unremovable">
+                            <div class="row content">
+                                <div class="carousel-content col-lg-8 offset-lg-2 bg-black-50 text-center pt48 pb40 o_colored_level">
+                                    <h2 style="font-size: 62px;" class="o_default_snippet_text">Clever
+                                        Slogan
+                                    </h2>
+                                    <div class="s_hr pt8 pb24" data-snippet="s_hr" data-name="Separator">
+                                        <hr class="w-25 mx-auto"
+                                            style="border-top-width: 1px; border-top-style: solid;"/>
+                                    </div>
+                                    <p class="lead o_default_snippet_text">Storytelling is powerful.
+                                        <br/>
+                                        It draws readers in and engages them.
+                                    </p>
+                                    <p>
+                                        <a href="/" class="btn btn-primary mb-2 o_default_snippet_text">
+                                            Start your journey
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item pt96 pb96 o_colored_level oe_img_bg o_bg_img_center"
+                         style="background-image: url(&quot;/my_online_appointment/static/src/img/slide4.jpg&quot;);"
+                         data-name="Slide">
+                        <div class="oe_unremovable container">
+                            <div class="row content">
+                                <div class="carousel-content col-lg-8 offset-lg-2 bg-black-50 text-center pt48 pb40 o_colored_level">
+                                    <h2 style="font-size: 62px;" class="o_default_snippet_text">Clever
+                                        Slogan
+                                    </h2>
+                                    <div class="s_hr pt8 pb24" data-snippet="s_hr" data-name="Separator">
+                                        <hr class="w-25 mx-auto"
+                                            style="border-top-width: 1px; border-top-style: solid;"/>
+                                    </div>
+                                    <p class="lead o_default_snippet_text">Storytelling is powerful.
+                                        <br/>
+                                        It draws readers in and engages them.
+                                    </p>
+                                    <p>
+                                        <a href="/" class="btn btn-primary mb-2 o_default_snippet_text">
+                                            Start your journey
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <a class="carousel-control-prev o_not_editable o_we_no_overlay" data-bs-slide="prev"
+                   role="img" aria-label="Previous" title="Previous" href="#Slide">
+                    <span class="carousel-control-prev-icon"/>
+                    <span class="visually-hidden o_default_snippet_text">Previous</span>
+                </a>
+                <a class="carousel-control-next o_not_editable o_we_no_overlay" data-bs-slide="next"
+                   role="img" aria-label="Next" title="Next" href="#Slide">
+                    <span class="carousel-control-next-icon"/>
+                    <span class="visually-hidden o_default_snippet_text">Next</span>
+                </a>
+            </div>
+        </section>
+    </template>
+
+    <template id="table_type">
+        <link rel="stylesheet" href="/my_online_appointment/static/src/css/main.css"/>
+        <section class="s_title pt40 pb40 o_colored_level" data-vcss="001" data-snippet="s_title" data-name="Title"
+                 style="background-image: none;">
+            <div class="s_allow_columns container">
+                <h1 style="text-align: left;">
+                    <font style="font-size: 62px;" class="o_default_snippet_text"
+                          data-sider-select-id="80f37325-4656-44b9-9c0d-cba28046a2b9">Table
+                    </font>
+                    <a t-attf-href="/table" class="btn btn-primary s_title_a" data-bs-original-title=""
+                       title="" data-sider-select-id="df9bc373-a9f1-472a-95c3-1dc86e78c2b3">Xem thêm
+                    </a>
+                </h1>
+            </div>
+        </section>
+
+        <section class="s_tabs pt48 pb48 o_colored_level" data-vcss="001" data-snippet="s_tabs" data-name="Tabs"
+                 style="background-image: none;">
+            <div class="container">
+                <div class="s_tabs_main">
+                    <div class="s_tabs_content tab-content">
+                        <div class="tab-pane fade show active" id="nav_tabs_content_1712734857943_94"
+                             role="tabpanel" aria-labelledby="nav_tabs_link_1712734857943_94">
+                            <div class="oe_structure oe_empty">
+                                <section class="s_text_block" style="background-image: none;">
+                                    <div class="container s_allow_columns">
+                                        <div class="row d-flex align-items-stretch">
+                                            <t t-foreach="tables" t-as="table">
+                                                <div class="col-lg-3 s_col_no_bgcolor pt16 pb16">
+                                                    <div class="card text-bg-white h-100">
+                                                        <a class="link"
+                                                           t-att-href="'/detail-table/' + str(table.id)">
+                                                            <img class="card-img-top"
+                                                                 t-att-src="'/web/image/manager.table/' + str(table.id) + '/image_1920'"
+                                                                 alt="" loading="lazy"/>
+                                                        </a>
+                                                        <div class="card-body">
+                                                            <a class="link"
+                                                               t-att-href="'/detail-table/' + str(table.id)">
+                                                                <h3 class="card-title o_default_snippet_text"
+                                                                    t-esc="table.name"/>
+                                                            </a>
+                                                            <div>
+                                                                <h4 class="s_rating_title o_default_snippet_text">
+                                                                    Yêu thích
+                                                                </h4>
+                                                                <div class="s_rating_icons o_not_editable col-lg-12"
+                                                                     style="display: flex; ">
+                                                                    <div class="s_rating_icons o_not_editable col-lg-6">
+                                                                        <span class="s_rating_active_icons"
+                                                                              style="color: rgb(255, 0, 0);">
+                                                                            <i class="fa fa-heart"/>
+                                                                            <i class="fa fa-heart"/>
+                                                                            <i class="fa fa-heart"/>
+                                                                        </span>
+                                                                        <span class="s_rating_inactive_icons">
+                                                                            <i class="fa fa-heart-o"/>
+                                                                            <i class="fa fa-heart-o"/>
+                                                                        </span>
+                                                                    </div>
+                                                                    <div class="col-lg-6" style="margin-top: -10px;">
+                                                                        <a href="/datlich" style="float: right; "
+                                                                           class="btn btn-primary mb-2 o_default_snippet_text">
+                                                                            Đặt lịch
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                                <hr class="w-100 mx-auto"
+                                                                    style="border-top-width: 1px; border-top-style: solid;"/>
+                                                            </div>
+                                                            <p class="card-text o_default_snippet_text description-content"
+                                                               t-esc="table.description"/>
+                                                            <button class="btn btn-link read-more-btn link"
+                                                                    style="margin-top: 5px;">Xem thêm
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </t>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+</odoo>

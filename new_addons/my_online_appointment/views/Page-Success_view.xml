@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="thank_you_template_id_inherit" inherit_id="mbs_online_appointment.thank_you_template_id">
+        <xpath expr="//ul[@class='pagination pagination-lg justify-content-end']" position="attributes">
+            <attribute name="style">display: none;</attribute>
+        </xpath>
+
+        <xpath expr="//form[@action='/datlich']" position="attributes">
+            <attribute name="action">/</attribute>
+        </xpath>
+
+        <xpath expr="//div[@class='col-lg-7 col-xl-6 mr-lg-auto']" position="after">
+            <div class="col-lg-5 col-xl-6 o_colored_level" style="padding-left: 150px;">
+                <ul class="list-unstyled mb-0 ps-2">
+                    <h4>
+                        <li>My Information</li>
+                    </h4>
+                    <li>
+                        <i class="fa fa-user fa-fw me-2"/>
+                        <t t-esc="default_name"/>
+                    </li>
+                    <li>
+                        <i class="fa fa-phone fa-fw me-2"/>
+                        <t t-esc="default_phone"/>
+                    </li>
+                    <li>
+                        <i class="fa fa-1x fa-fw fa-envelope me-2"/>
+                        <t t-esc="default_email"/>
+                    </li>
+                    <li>
+                        <i class="fa fa-map-marker fa-fw me-2"/>
+                        <span class="o_force_ltr">3575 Fake Buena Vista Avenue</span>
+                    </li>
+                </ul>
+                <ul class="list-unstyled mb-0 ps-2" style="margin-top: 80px;">
+                    <h4>
+                        <li>Restaurant Information</li>
+                    </h4>
+                    <li>
+                        <i class="fa fa-cutlery fa-fw me-2"/>
+                        <t t-esc="default_restaurant"/>
+                    </li>
+                    <li>
+                        <i class="fa fa-phone fa-fw me-2"/>
+                        <t t-esc="default_restaurant_phone"/>
+                    </li>
+                    <li>
+                        <i class="fa fa-1x fa-fw fa-envelope me-2"/>
+                        <t t-esc="default_restaurant_email"/>
+                    </li>
+                    <li>
+                        <i class="fa fa-map-marker fa-fw me-2"/>
+                        <t t-esc="default_address"/>
+                    </li>
+                </ul>
+            </div>
+        </xpath>
+    </template>
+</odoo>

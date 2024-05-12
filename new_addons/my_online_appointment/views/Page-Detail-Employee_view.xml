@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="detail_employee_form">
+        <link rel="text/css" href="/my_online_appointment/static/src/css/main.css"/>
+        <script type="text/javascript" src="/my_online_appointment/static/src/js/main.js"/>
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure oe_empty">
+                <section class="s_text_image pt32 o_colored_level pb0" data-snippet="s_image_text"
+                         data-name="Image - Text" style="background-image: none;">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="pt16 pb16 o_colored_level col-lg-7">
+                                <form method="get" data-snippet="s_searchbar_input"
+                                      class="o_searchbar_form o_wait_lazy_js s_searchbar_input"
+                                      action="/website/search">
+                                    <div role="search" class="input-group ">
+                                        <input type="search" name="search"
+                                               class="search-query form-control oe_search_box None"
+                                               placeholder="Search..." data-search-type="all" data-limit="5"
+                                               data-display-image="true" data-display-description="true"
+                                               data-display-extra-link="true" data-display-detail="true"
+                                               data-order-by="name asc"
+                                               data-sider-insert-id="a56be91b-5c2d-401a-b019-95d5eb9f9020"/>
+                                        <button type="submit" aria-label="Search" title="Search"
+                                                class="btn oe_search_button btn-primary">
+                                            <i class="oi oi-search"/>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-lg-5 d-flex align-items-center">
+                                <ol class="breadcrumb p-0 mb-2 m-lg-0">
+                                    <li class="breadcrumb-item o_not_editable">
+                                        <a t-att-href="'/Home'">All Employee</a>
+                                    </li>
+                                    <li class="breadcrumb-item active">
+                                        <span t-field="employee.name"/>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="s_text_image pb32 o_colored_level pt0" data-snippet="s_image_text"
+                         data-name="Image - Text" style="background-image: none;">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="pb16 o_colored_level pt16 col-lg-4">
+                                <img class="card-img-top"
+                                     t-att-src="'/web/image/hr.employee/' + str(employee.id) + '/image_1920'" alt=""
+                                     loading="lazy"/>
+                            </div>
+                            <div class="pt16 pb16 o_colored_level col-lg-8">
+                                <h2 class="card-title o_default_snippet_text" t-esc="employee.name"/>
+                                <p class="o_default_snippet_text">Ngày sinh:
+                                    <t t-esc="employee.birthday"/>
+                                </p>
+                                <p class="o_default_snippet_text">Chức vụ:
+                                    <t t-esc="employee.job_id.name"/>
+                                </p>
+                                <p class="o_default_snippet_text">Quốc gia:
+                                    <t t-esc="employee.country_of_birth.name"/>
+                                </p>
+                                <p class="o_default_snippet_text">Mô tả:
+                                    <t t-esc="employee.note"/>
+                                </p>
+                                <div class="s_social_media o_not_editable text-end" data-snippet="s_social_media"
+                                     data-name="Social Media">
+                                    <h4 class="s_social_media_title d-none o_default_snippet_text">Social Media</h4>
+                                    <a href="/website/social/facebook" class="s_social_media_facebook" target="_blank">
+                                        <i class="fa fa-facebook o_editable_media m-1"/>
+                                    </a>
+                                    <a href="/website/social/twitter" class="s_social_media_twitter" target="_blank">
+                                        <i class="fa fa-twitter o_editable_media m-1"/>
+                                    </a>
+                                    <a href="/website/social/linkedin" class="s_social_media_linkedin" target="_blank">
+                                        <i class="fa fa-linkedin o_editable_media m-1"/>
+                                    </a>
+                                    <a href="/website/social/youtube" class="s_social_media_youtube" target="_blank">
+                                        <i class="fa fa-youtube o_editable_media m-1"/>
+                                    </a>
+                                    <a href="/website/social/instagram" class="s_social_media_instagram"
+                                       target="_blank">
+                                        <i class="fa fa-instagram o_editable_media m-1"/>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="s_title pt40 pb40 o_colored_level" data-vcss="001" data-snippet="s_title"
+                         data-name="Title" style="background-image: none;">
+                    <div class="container s_allow_columns">
+                        <h3>
+                            <font style="font-size: 62px;" class="o_default_snippet_text">những nhân viên khác</font>
+                        </h3>
+                    </div>
+                </section>
+
+                <section class="s_features_grid pt48 pb24 o_colored_level" data-snippet="s_features_grid"
+                         data-name="Features Grid" style="background-image: none;">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-3 s_col_no_bgcolor pb24">
+                                <div class="row">
+                                    <div class="col-lg-12 pb24 o_colored_level">
+                                        <div class="row s_col_no_resize s_col_no_bgcolor">
+                                            <a class="link" t-att-href="'/detail-employee/' + str(similar_employees.id)">
+                                                <img alt=""
+                                                     t-attf-src="/web/image?model=hr.employee&amp;field=image_1920&amp;id=#{similar_employees.id}"
+                                                     class="img-fluid rounded-circle mx-auto o_editable_media"
+                                                     loading="lazy"/>
+                                            </a>
+                                            <div style="text-align: center; margin-top: 25px;">
+                                                <a class="link" t-att-href="'/detail-employee/' + str(similar_employees.id)">
+                                                    <h3 class="o_default_snippet_text">
+                                                        <t t-esc="similar_employees.name"/>
+                                                    </h3>
+                                                </a>
+                                                <p class="o_default_snippet_text">
+                                                    <t t-esc="similar_employees.note"/>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </t>
+    </template>
+</odoo>

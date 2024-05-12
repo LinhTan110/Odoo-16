@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="sale_order_form_inherit" model="ir.ui.view">
+            <field name="name">sale_order_form_inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@class='oe_button_box']" position="inside">
+                    <button name="action_view_appointment" string="View Appointment" type="object" class="btn-primary" icon="fa-list"/>
+                </xpath>
+                <xpath expr="//field[@name='payment_term_id']" position="after">
+                    <field name="capacity"/>
+                    <field name="location_table"/>
+                    <field name="characteristic"/>
+                    <field name="table"/>
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="email"/>
+                    <field name="phone"/>
+                </xpath>
+                <xpath expr="//group[@name='partner_details']" position="inside">
+                    <field name="restaurant_name"/>
+                    <field name="address"/>
+                </xpath>
+                <xpath expr="//field[@name='validity_date']" position="before">
+                    <field name="start" attrs="{'invisible': [('allday', '=', True)]}"/>
+                    <field name="stop" attrs="{'invisible': [('allday', '=', True)]}"/>
+                    <field name="duration" attrs="{'invisible': [('allday', '=', True)]}"/>
+                    <field name="start_date" attrs="{'invisible': [('allday', '=', False)]}"/>
+                    <field name="stop_date" attrs="{'invisible': [('allday', '=', False)]}"/>
+                    <field name="allday" attrs="{'invisible': [('allday', '=', False)]}"/>
+                </xpath>
+<!--                <xpath expr="//field[@name='validity_date']" position="before">-->
+<!--                    <field name="start" attrs="{'invisible': [  ('start', '=', False), ('stop', '=', False)]}"/>-->
+<!--                    <field name="stop" attrs="{'invisible': [('start', '=', False), ('stop', '=', False)]}"/>-->
+<!--                    <field name="start_date" attrs="{'invisible': [ '|', '|', ('start', '=', False), ('stop', '=', False), ('allday', '=', False)]}"/>-->
+<!--                    <field name="stop_date" attrs="{'invisible': [ '|', '|', ('start', '=', False), ('stop', '=', False), ('allday', '=', False)]}"/>-->
+<!--                    <field name="allday" attrs="{'invisible': [ '|', '|', ('start', '=', False), ('stop', '=', False), ('allday', '=', False)]}"/>-->
+<!--                </xpath>-->
+            </field>
+        </record>
+    </data>
+</odoo>

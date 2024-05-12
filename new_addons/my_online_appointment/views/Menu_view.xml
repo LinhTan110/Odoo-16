@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="menu_home_form" model="website.menu">
+            <field name="name">Home</field>
+            <field name="url">/</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence">10</field>
+        </record>
+
+        <record id="menu_patient_registration_form_inherited" model="website.menu">
+            <field name="name">Appointment</field>
+            <field name="url">/patient_registration</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence">10</field>
+        </record>
+
+        <record id="menu_datlich_form" model="website.menu">
+            <field name="name">Đặt lịch</field>
+            <field name="url">/datlich</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence">10</field>
+        </record>
+
+        <record id="menu_table_form" model="website.menu">
+            <field name="name">Table</field>
+            <field name="url">/table</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence">10</field>
+        </record>
+
+        <record id="menu_policy_form" model="website.menu">
+            <field name="name">Policy</field>
+            <field name="url">/policy</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence">10</field>
+        </record>
+
+    </data>
+</odoo>

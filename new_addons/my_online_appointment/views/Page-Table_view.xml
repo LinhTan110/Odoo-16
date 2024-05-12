@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="table_form">
+        <link rel="stylesheet" href="/my_online_appointment/static/src/css/main.css"/>
+        <script type="text/javascript" src="/my_online_appointment/static/src/js/main.js"/>
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure oe_empty">
+                <section class="s_title pt40 pb40 o_colored_level" data-vcss="001" data-snippet="s_title"
+                         data-name="Title"
+                         style="background-image: none;">
+                    <div class="container s_allow_columns">
+                        <h1 style="text-align: center;">
+                            <font style="font-size: 62px;" class="o_default_snippet_text"
+                                  data-sider-select-id="b80febb7-1534-497e-af4b-21b5cfeff958">Danh sách bàn ăn
+                            </font>
+                        </h1>
+                    </div>
+                </section>
+
+                <section class="s_three_columns o_cc o_cc2 pt32 pb32 o_colored_level" data-vcss="001"
+                         data-snippet="s_three_columns" data-name="Columns" style="background-image: none;">
+                    <div class="container">
+                        <div class="row d-flex align-items-stretch">
+                            <t t-foreach="tables" t-as="table">
+                                <div class="col-lg-3 s_col_no_bgcolor pt16 pb16">
+                                    <div class="card text-bg-white h-100">
+                                        <a class="link" t-att-href="'/detail-table/' + str(table.id)">
+                                            <img class="card-img-top" t-att-src="'/web/image/manager.table/' + str(table.id) + '/image_1920'" alt="" loading="lazy"/>
+                                        </a>
+                                        <div class="card-body">
+                                            <a class="link" t-att-href="'/detail-table/' + str(table.id)">
+                                                <h3 class="card-title o_default_snippet_text" t-esc="table.name"/>
+                                            </a>
+                                            <div>
+                                                <h4 class="s_rating_title o_default_snippet_text">Yêu thích</h4>
+                                                <div class="s_rating_icons o_not_editable">
+                                                    <span class="s_rating_active_icons" style="color: rgb(255, 0, 0);">
+                                                        <i class="fa fa-heart"/>
+                                                        <i class="fa fa-heart"/>
+                                                        <i class="fa fa-heart"/>
+                                                    </span>
+                                                    <span class="s_rating_inactive_icons">
+                                                        <i class="fa fa-heart-o"/>
+                                                        <i class="fa fa-heart-o"/>
+                                                    </span>
+                                                </div>
+                                                <hr class="w-100 mx-auto"
+                                                    style="border-top-width: 1px; border-top-style: solid;"/>
+                                            </div>
+                                            <p class="card-text o_default_snippet_text description-content"
+                                               t-esc="table.description"/>
+                                            <button class="btn btn-link read-more-btn link">Xem thêm</button>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-center pt-5 pb-3">
+                                        <!--                                    <t t-call="my_online_appointment.pager"/>-->
+                                    </div>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                </section>
+                <t t-call="my_online_appointment.banner"/>
+            </div>
+        </t>
+    </template>
+
+    <template id="banner">
+        <section
+                class="s_parallax parallax s_parallax_is_fixed bg-black-50 o_half_screen_height o_colored_level"
+                data-scroll-background-ratio="1" data-snippet="s_parallax" data-name="Parallax"
+                style="background-image: none;">
+            <span class="s_parallax_bg oe_img_bg"
+                  style="background-image: url('/my_online_appointment/static/src/img/slide1.jpg'); background-position: 50% 75%;"/>
+            <div class="o_we_bg_filter bg-black-50"/>
+            <div class="oe_structure oe_empty" data-editor-message-default="true"
+                 data-editor-message="DRAG BUILDING BLOCKS HERE"/>
+        </section>
+    </template>
+
+</odoo>

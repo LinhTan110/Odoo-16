@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="partner_tree_inherit" model="ir.ui.view">
+            <field name="name">partner_tree_inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='active']" position="after">
+                    <field name="position" optional="show"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="partner_form_inherit" model="ir.ui.view">
+            <field name="name">partner_form_inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@class='oe_button_box']" position="inside">
+                    <button name="action_create_appointment" type="object" string="New Appointment" class="btn-primary" icon="fa-calendar"/>
+                    <button name="action_view_appointments" string="View Appointments" type="object" class="btn-primary" icon="fa-list"/>
+                </xpath>
+                <xpath expr="//field[@name='vat']" position="after">
+                    <field name="position"/>
+                </xpath>
+            </field>
+        </record>
+
+
+        <record id="employee_form_inherit" model="ir.ui.view">
+            <field name="name">employee_form_inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='hr_settings']/group" position="after">
+                    <group string="Note">
+                        <field name="note"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

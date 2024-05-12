@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="appointment_id_report" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//t[@t-set='address']" position="inside">
+            <div t-if="doc.email" class="col-auto mw-100 mb-2" name="email">
+                <strong>Email:
+                    <span class="m-0" t-field="doc.email"/>
+                </strong>
+            </div>
+            <div t-if="doc.phone" class="col-auto mw-100 mb-2" name="phone">
+                <strong>Phone:
+                    <span class="m-0" t-field="doc.phone"/>
+                </strong>
+            </div>
+        </xpath>
+
+        <xpath expr="//div[@name='signature']" position="before">
+            <div t-if="doc.restaurant_name" class="col-auto mw-100 mb-2" name="restaurant_name">
+                <strong>Restaurant name:
+                    <span class="m-0" t-field="doc.restaurant_name"/>
+                </strong>
+            </div>
+            <div t-if="doc.address" class="col-auto mw-100 mb-2" name="address">
+                <strong>Address:
+                    <span class="m-0" t-field="doc.address"/>
+                </strong>
+            </div>
+        </xpath>
+
+        <xpath expr="//div[@id='informations']" position="after">
+            <div class="row mt-4 mb-4" id="edit_time">
+                <div t-if="doc.allday" class="col-auto col-3 mw-100 mb-2" name="start_date">
+                    <strong>Start Date:</strong>
+                    <p class="m-0" t-field="doc.start_date"/>
+                </div>
+                <div t-if="doc.allday" class="col-auto col-3 mw-100 mb-2" name="stop_date">
+                    <strong>End Date:</strong>
+                    <p class="m-0" t-field="doc.stop_date"/>
+                </div>
+                <div t-if="not doc.allday" class="col-auto col-3 mw-100 mb-2" name="start_time">
+                    <strong>Start Time:</strong>
+                    <p class="m-0" t-field="doc.start"/>
+                </div>
+                <div t-if="not doc.allday" class="col-auto col-3 mw-100 mb-2" name="stop_time">
+                    <strong>End Time:</strong>
+                    <p class="m-0" t-field="doc.stop"/>
+                </div>
+                <div t-if="doc.duration" class="col-auto col-3 mw-100 mb-2" name="duration">
+                    <strong>Time:</strong>
+                    <p class="m-0" t-if="not doc.allday" t-field="doc.duration">hours</p>
+                    <p class="m-0" t-if="doc.allday">24 hours</p>
+                </div>
+                <div t-if="doc.allday" class="col-auto col-3 mw-100 mb-2" name="allday">
+                    <strong>Allday:</strong>
+                    <p class="m-0" t-field="doc.allday"/>
+                </div>
+                <div t-if="not doc.allday" class="col-auto col-3 mw-100 mb-2" name="allday">
+                    <strong>Allday:</strong>
+                    <p class="m-0">False</p>
+                </div>
+            </div>
+            <div class="row mt-4 mb-4" id="edit_table">
+                <div t-if="doc.capacity" class="col-auto col-3 mw-100 mb-2" name="capacity">
+                    <strong>Capacity:</strong>
+                    <p class="m-0" t-field="doc.capacity"/>
+                </div>
+                <div t-if="doc.location_table" class="col-auto col-3 mw-100 mb-2" name="location_table">
+                    <strong>Location Table:</strong>
+                    <p class="m-0" t-field="doc.location_table"/>
+                </div>
+                <div t-if="doc.characteristic" class="col-auto col-3 mw-100 mb-2" name="characteristic">
+                    <strong>Characteristic:</strong>
+                    <p class="m-0" t-if="doc.characteristic" t-field="doc.characteristic"/>
+                </div>
+                <div t-if="doc.table" class="col-auto col-3 mw-100 mb-2" name="table">
+                    <strong>Table:</strong>
+                    <p class="m-0" t-field="doc.table"/>
+                </div>
+            </div>
+        </xpath>
+
+    </template>
+
+</odoo>

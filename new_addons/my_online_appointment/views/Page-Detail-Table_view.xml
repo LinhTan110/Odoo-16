@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="detail_table_form">
+        <link rel="text/css" href="/my_online_appointment/static/src/css/main.css"/>
+        <script type="text/javascript" src="/my_online_appointment/static/src/js/main.js"/>
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure oe_empty">
+                <section class="s_text_image pt32 o_colored_level pb0" data-snippet="s_image_text"
+                         data-name="Image - Text" style="background-image: none;">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="pt16 pb16 o_colored_level col-lg-6">
+                                <form method="get" data-snippet="s_searchbar_input"
+                                      class="o_searchbar_form o_wait_lazy_js s_searchbar_input"
+                                      action="/website/search">
+                                    <div role="search" class="input-group ">
+                                        <input type="search" name="search"
+                                               class="search-query form-control oe_search_box None"
+                                               placeholder="Search..." data-search-type="all" data-limit="5"
+                                               data-display-image="true" data-display-description="true"
+                                               data-display-extra-link="true" data-display-detail="true"
+                                               data-order-by="name asc"
+                                               data-sider-insert-id="a56be91b-5c2d-401a-b019-95d5eb9f9020"/>
+                                        <button type="submit" aria-label="Search" title="Search"
+                                                class="btn oe_search_button btn-primary">
+                                            <i class="oi oi-search"/>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-lg-6 d-flex align-items-center">
+                                <ol class="breadcrumb p-0 mb-2 m-lg-0">
+                                    <li class="breadcrumb-item o_not_editable">
+                                        <a t-att-href="'/table'">All Products</a>
+                                    </li>
+                                    <li class="breadcrumb-item active">
+                                        <span t-field="table.name"/>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="s_text_image pb32 o_colored_level pt0" data-snippet="s_image_text"
+                         data-name="Image - Text" style="background-image: none;">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="pb16 o_colored_level pt16 col-lg-6">
+                                <img class="card-img-top"
+                                     t-att-src="'/web/image/manager.table/' + str(table.id) + '/image_1920'"
+                                     alt="" loading="lazy"/>
+                            </div>
+                            <div class="pt16 pb16 o_colored_level col-lg-6">
+                                <h2 class="card-title o_default_snippet_text" t-esc="table.name"/>
+<!--                                <h3 class="card-title o_default_snippet_text price_format"> Giá cả: <t t-esc="table.price"/> VNĐ</h3>-->
+                                <p class="o_default_snippet_text">Vị trí:
+                                    <t t-esc="table.location_table.name"/>
+                                </p>
+                                <p class="o_default_snippet_text">Đặc điểm bàn:
+                                    <t t-esc="table.characteristic.name"/>
+                                </p>
+                                <p class="o_default_snippet_text">Số lượng chứa:
+                                    <t t-esc="table.capacity.name"/>
+                                </p>
+                                <p class="o_default_snippet_text">Mô tả:
+                                    <t t-esc="table.description"/>
+                                </p>
+                                <p>
+                                    <a t-att-href="'/patient_registration'"
+                                       class="btn btn-primary mb-2 o_default_snippet_text">Đặt bàn
+                                    </a>
+                                </p>
+                                <div class="s_rating pt16 pb16" data-vcss="001" data-icon="fa-heart"
+                                     data-snippet="s_rating" data-name="Rating">
+                                    <h4 class="s_rating_title o_default_snippet_text">Yêu thích</h4>
+                                    <div class="s_rating_icons o_not_editable">
+                                        <span class="s_rating_active_icons" style="color: rgb(255, 0, 0);">
+                                            <i class="fa fa-heart"/>
+                                            <i class="fa fa-heart"/>
+                                            <i class="fa fa-heart"/>
+                                        </span>
+                                        <span class="s_rating_inactive_icons">
+                                            <i class="fa fa-heart-o"/>
+                                            <i class="fa fa-heart-o"/>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="s_social_media o_not_editable text-end" data-snippet="s_social_media"
+                                     data-name="Social Media">
+                                    <h4 class="s_social_media_title d-none o_default_snippet_text">Social Media</h4>
+                                    <a href="/website/social/facebook" class="s_social_media_facebook" target="_blank">
+                                        <i class="fa fa-facebook o_editable_media m-1"/>
+                                    </a>
+                                    <a href="/website/social/twitter" class="s_social_media_twitter" target="_blank">
+                                        <i class="fa fa-twitter o_editable_media m-1"/>
+                                    </a>
+                                    <a href="/website/social/linkedin" class="s_social_media_linkedin" target="_blank">
+                                        <i class="fa fa-linkedin o_editable_media m-1"/>
+                                    </a>
+                                    <a href="/website/social/youtube" class="s_social_media_youtube" target="_blank">
+                                        <i class="fa fa-youtube o_editable_media m-1"/>
+                                    </a>
+                                    <a href="/website/social/instagram" class="s_social_media_instagram"
+                                       target="_blank">
+                                        <i class="fa fa-instagram o_editable_media m-1"/>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="s_title pt40 pb40 o_colored_level" data-vcss="001" data-snippet="s_title"
+                         data-name="Title" style="background-image: none;">
+                    <div class="container s_allow_columns">
+                        <h1 style="text-align: center;">
+                            <font style="font-size: 62px;" class="o_default_snippet_text">Danh sách bàn tương tự</font>
+                        </h1>
+                    </div>
+                </section>
+                <section class="s_three_columns o_cc o_cc2 pt32 pb32 o_colored_level" data-vcss="001"
+                         data-snippet="s_three_columns" data-name="Columns" style="background-image: none;">
+                    <div class="container">
+                        <div class="row d-flex align-items-stretch">
+                            <t t-foreach="related_tables" t-as="related_table">
+                                <div class="col-lg-3 s_col_no_bgcolor pt16 pb16">
+                                    <div class="card text-bg-white h-100">
+                                        <a t-att-href="'/detail-table/' + str(related_table.id)">
+                                            <img class="card-img-top"
+                                                 t-att-src="'/web/image/manager.table/' + str(related_table.id) + '/image_1920'"
+                                                 alt="'id', '!=', table_id)  # Loại bỏ bàn hiện đang xem khỏi kết quả" loading="lazy"/>
+                                        </a>
+                                        <div class="card-body">
+                                            <a t-att-href="'/detail-table/' + str(related_table.id)">
+                                                <h3 class="card-title o_default_snippet_text"
+                                                    t-esc="related_table.name"/>
+                                            </a>
+                                            <div>
+                                                <h4 class="s_rating_title o_default_snippet_text">Yêu thích</h4>
+                                                <div class="s_rating_icons o_not_editable">
+                                                    <span class="s_rating_active_icons" style="color: rgb(255, 0, 0);">
+                                                        <i class="fa fa-heart"/>
+                                                        <i class="fa fa-heart"/>
+                                                        <i class="fa fa-heart"/>
+                                                    </span>
+                                                    <span class="s_rating_inactive_icons">
+                                                        <i class="fa fa-heart-o"/>
+                                                        <i class="fa fa-heart-o"/>
+                                                    </span>
+                                                </div>
+                                                <hr class="w-100 mx-auto"
+                                                    style="border-top-width: 1px; border-top-style: solid;"/>
+                                            </div>
+                                            <p class="card-text o_default_snippet_text description-content"
+                                               t-esc="related_table.description"/>
+                                            <button class="btn btn-link read-more-btn link">Xem thêm</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </t>
+    </template>
+</odoo>

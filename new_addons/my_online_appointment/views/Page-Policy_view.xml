@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="policy_form" name="Policy Page">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure oe_empty">
+                <section class="s_title pt40 pb40 o_colored_level" data-vcss="001" data-snippet="s_title"
+                         data-name="Title" style="background-image: none;">
+                    <div class="container s_allow_columns">
+                        <h1 style="text-align: center;">
+                            <font style="font-size: 62px;" class="o_default_snippet_text">Chính sách nhà hàng</font>
+                        </h1>
+                    </div>
+                </section>
+                <section class="s_text_block pt40 pb40 o_colored_level" data-snippet="s_text_block" data-name="Text"
+                         style="background-image: none;">
+                    <div class="container s_allow_columns">
+                        <t t-foreach="policys" t-as="policy">
+                            <div class="pb16">
+                                <h2 t-field="policy.name"/>
+                                <p ><h5 style="margin-left: 30px;" t-field="policy.description"/></p>
+                            </div>
+                        </t>
+                    </div>
+                </section>
+            </div>
+        </t>
+    </template>
+</odoo>

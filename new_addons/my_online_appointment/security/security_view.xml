@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!--            khai bao danh muc quyen -->
+        <record model="ir.module.category" id="appointment_category_access_right">
+            <field name="name">Appointments</field>
+            <field name="sequence">1</field>
+        </record>
+        <!--            Khai Bao Nhom Quyen-->
+        <record id="group_appointment_user" model="res.groups">
+            <field name="name">Appointment User</field>
+            <field name="category_id" ref="my_online_appointment.appointment_category_access_right"/>
+        </record>
+
+
+        <!--Khai Bao Nhom Quyen-->
+        <record id="group_restaurant_manager" model="res.groups">
+            <field name="name">Restaurant Manager</field>
+            <field name="category_id" ref="my_online_appointment.appointment_category_access_right"/>
+            <!--            Xac Dinh nhom duoc ke thua quyen tu nhom nao -->
+            <field name="implied_ids" eval="[(4, ref('my_online_appointment.group_appointment_user'))]"/>
+        </record>
+
+        <!--Khai Bao Nhom Quyen-->
+        <record id="group_appointment_manager" model="res.groups">
+            <field name="name">Appointment Manager</field>
+            <field name="category_id" ref="my_online_appointment.appointment_category_access_right"/>
+            <!--            Xac Dinh nhom duoc ke thua quyen tu nhom nao -->
+            <field name="implied_ids" eval="[(4, ref('my_online_appointment.group_restaurant_manager'))]"/>
+        </record>
+
+        <!--        <record id="owner_employee_rule" model="ir.rule">-->
+        <!--            <field name="name">Owner Employee Rule</field>-->
+        <!--            <field name="model_id" ref="odoo_learn.model_learn_employee"/>-->
+        <!--            <field name="domain_force">[('create_uid', '=', user.id)]</field>-->
+        <!--            <field name="perm_write" eval="1"/>-->
+        <!--            <field name="perm_create" eval="1"/>-->
+        <!--            <field name="perm_read" eval="1"/>-->
+        <!--            <field name="perm_unlink" eval="1"/>-->
+        <!--            &lt;!&ndash; You can attach this rule to a specific group, Or make it Global &ndash;&gt;-->
+        <!--            <field name="groups" eval="[(4, ref('odoo_learn.group_employee_user'))]"/>-->
+        <!--            &lt;!&ndash;<field name="global" eval="1"/> &ndash;&gt;-->
+        <!--        </record>-->
+
+        <!--        <record id="all_employee_rule" model="ir.rule">-->
+        <!--            <field name="name">All Employee Rule</field>-->
+        <!--            <field name="model_id" ref="odoo_learn.model_learn_employee"/>-->
+        <!--            <field name="domain_force">[(1, '=', 1)]</field>-->
+        <!--            <field name="perm_write" eval="1"/>-->
+        <!--            <field name="perm_create" eval="1"/>-->
+        <!--            <field name="perm_read" eval="1"/>-->
+        <!--            <field name="perm_unlink" eval="1"/>-->
+        <!--            &lt;!&ndash; You can attach this rule to a specific group, Or make it Global &ndash;&gt;-->
+        <!--            <field name="groups" eval="[(4, ref('odoo_learn.group_employee_manager'))]"/>-->
+        <!--            &lt;!&ndash;<field name="global" eval="1"/> &ndash;&gt;-->
+        <!--        </record>-->
+
+    </data>
+</odoo>

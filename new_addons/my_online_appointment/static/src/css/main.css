@@ -1,0 +1,99 @@
+.link{
+    text-decoration: none !important;
+    color: 329794 !important;
+    padding: 0px;
+}
+
+.link:hover{
+
+    color: #4dbcc1 !important;
+}
+
+.description-content.show-less {
+    overflow: hidden;
+    max-height: 100px; /* Điều chỉnh chiều cao tối đa của mô tả */
+    position: relative; /* Thêm thuộc tính position để đặt vị trí cho nút "Xem thêm" */
+}
+
+.description-content.show-less::after {
+    content: '...';
+    position: absolute; /* Thêm thuộc tính  position để dịch chuyển dấu "..." xuống dưới phần mô tả */
+    bottom: 0; /* Đặt dấu "..." ở dưới phần mô tả */
+    right: 0; /* Đặt dấu "..." ở phía bên phải của phần mô tả */
+}
+
+.description-content.show-less + .read-more-btn {
+    display: block;
+}
+
+.read-more-btn {
+    display: none;
+}
+
+.height_partner {
+    height: 65px;
+}
+
+.s_title_a {
+    float: right;
+}
+
+.check_form {
+    text-align: center;
+}
+
+.label_check {
+    margin-top: 30px;
+}
+
+.check_input {
+    width: 20px;
+    height: 20px;
+    margin-top: 35px;
+    margin-left: 20px;
+}
+
+.form_input {
+    height: 40px;
+    font-size: 25px;
+}
+
+.text_input{
+    font-size: 18px;
+}
+
+.table-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: start;
+    padding: 10px;
+    border: 2px solid #ccc;
+    margin-top: 20px;
+    width: 96%;
+    margin-left: 16px;
+}
+
+.table-container button {
+    width: calc(20% - 20px); /* Calculate width for 5 buttons per row with 20px gap */
+    height: 50px;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.table-container button:hover {
+    background-color: #e0e0e0;
+}
+
+.table-container button.selected {
+    background-color: green;
+}
+
+.form-group{
+    margin-bottom: 25px;
+}

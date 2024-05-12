@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="appointment_account_move_form_inherit" model="ir.ui.view">
+            <field name="name">appointment_account_move_form_inherit</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@id='header_left_group']" position="inside">
+                    <field name="phone"/>
+                    <field name="email"/>
+                    <field name="restaurant_name"/>
+                    <field name="address"/>
+                    <field name="characteristic"/>
+                    <field name="capacity"/>
+                </xpath>
+                <xpath expr="//group[@id='header_right_group']" position="inside">
+                    <field name="start" attrs="{'invisible': [('allday', '=', True)]}"/>
+                    <field name="stop" attrs="{'invisible': [('allday', '=', True)]}"/>
+                    <field name="duration" attrs="{'invisible': [('allday', '=', True)]}"/>
+                    <field name="start_date" attrs="{'invisible': [('allday', '=', False)]}"/>
+                    <field name="stop_date" attrs="{'invisible': [('allday', '=', False)]}"/>
+                    <field name="allday" attrs="{'invisible': [('allday', '=', False)]}"/>
+                    <field name="location_table"/>
+                    <field name="table"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

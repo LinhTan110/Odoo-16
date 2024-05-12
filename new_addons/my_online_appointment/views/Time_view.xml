@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        # hien o ngoai
+        <record id="reservation_view_tree" model="ir.ui.view">
+            <field name="name">reservation_view_tree</field>
+            <field name="model">reservation.time</field>
+            <field name="arch" type="xml">
+                <tree string="reservation_tree">
+                    <field name="table_id" optional="show"/>
+<!--                    <field name="table_name" optional="show"/>-->
+                    <field name="start" optional="show" attrs="{'invisible': [('allday', '=', True)]}"/>
+                    <field name="stop" optional="show" attrs="{'invisible': [('allday', '=', True)]}"/>
+                    <field name="start_date" optional="show" attrs="{'invisible': [('allday', '=', False)]}"/>
+                    <field name="stop_date" optional="show" attrs="{'invisible': [('allday', '=', False)]}"/>
+                    <field name="duration" optional="show" attrs="{'invisible': [('allday', '=', True)]}"/>
+                    <field name="allday" optional="show"/>
+                    <field name="capacity" optional="show"/>
+                    <field name="location_table" optional="show"/>
+                    <field name="characteristic" optional="show"/>
+                </tree>
+            </field>
+        </record>
+        # trong cho tao moi
+        <record id="reservation_view_form" model="ir.ui.view">
+            <field name="name">reservation_view_form</field>
+            <field name="model">reservation.time</field>
+            <field name="arch" type="xml">
+                <form string="reservation_form">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="table_id" />
+<!--                                <field name="table_name"/>-->
+                                <field name="capacity"/>
+                                <field name="location_table"/>
+                                <field name="characteristic"/>
+                            </group>
+                            <group>
+                                <field name="start_date" string="Starting at"
+                                       attrs="{'required': [('allday','=',True)], 'invisible': [('allday','=',False)]}"
+                                       force_save="1"/>
+                                <field name="stop_date" string="Ending at"
+                                       attrs="{'required': [('allday','=',True)],'invisible': [('allday','=',False)]}"
+                                       force_save="1"/>
+
+                                <field name="start" string="Starting at"
+                                       attrs="{'required': [('allday','=',False)], 'invisible': [('allday','=',True)]}"/>
+                                <field name="stop" string="Ending At"
+                                       attrs="{'invisible': [('allday','=',True)]}"/>
+                                <label for="duration" attrs="{'invisible': [('allday','=',True)]}"/>
+                                <div attrs="{'invisible': [('allday','=',True)]}">
+                                    <field name="duration" widget="float_time" string="Duration" class="oe_inline"/>
+                                    <span>hours</span>
+                                </div>
+                                <field name="allday" force_save="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

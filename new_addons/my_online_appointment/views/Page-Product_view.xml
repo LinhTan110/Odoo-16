@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="product_inherit"
+              inherit_id="website_sale.product">
+        <xpath expr="//p[@class='text-muted my-2']" position="after">
+            <p t-field="product.description" class="text-muted my-2"
+               placeholder="A description of the dish will appear on the document."/>
+        </xpath>
+        <xpath expr="//p[@class='text-muted my-2']" position="attributes">
+            <attribute name="style">display: none;</attribute>
+        </xpath>
+        <xpath expr="//div[@class='js_product js_main_product mb-3']" position="before">
+            <p>Nguyên liệu:
+                <t t-foreach="product.ingredients" t-as="ingredient">
+                    <t t-esc="ingredient.name"/>
+                    <t t-if="not ingredient.is_last">, </t>
+                    <t t-if="ingredient.is_last">.</t>
+                </t>
+            </p>
+            <spant t-field="product.dish_list" style="display:none"/>
+            <p>Danh mục:
+                <t t-esc="product.dish_list.name"/>
+            </p>
+            <spant t-field="product.time_preparation" style="display:none"/>
+            <p>Thời gian cần chuẩn bị:
+                <t t-esc="product.time_preparation"/>
+                <span>Phút</span>
+            </p>
+            <spant t-field="product.date_menu" style="display:none"/>
+            <p>Ngày vào thực đơn:
+                <t t-esc="product.date_menu"/>
+            </p>
+            <spant t-field="product.status" style="display:none"/>
+            <p>Trạng thái:
+                <t t-esc="product.status"/>
+            </p>
+        </xpath>
+    </template>
+</odoo>
